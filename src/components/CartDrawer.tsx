@@ -39,7 +39,7 @@ export const CartDrawer: React.FC = () => {
 
       {/* Drawer panel */}
       <aside
-        className={`bg-surface-container-low dark:bg-primary-container fixed right-0 top-0 h-full w-full md:w-96 z-50 border-l border-outline-variant dark:border-on-surface-variant shadow-2xl flex flex-col p-gutter transition-transform duration-500 ease-in-out ${
+        className={`bg-surface-container-low bg-white/75 fixed right-0 top-0 h-full w-full md:w-96 z-50 border-l border-outline-variant dark:border-on-surface-variant shadow-2xl flex flex-col p-gutter transition-transform duration-500 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

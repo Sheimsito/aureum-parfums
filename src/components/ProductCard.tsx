@@ -35,10 +35,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
       {/* Product Information */}
       <div className="flex flex-col items-center text-center">
-        <span className="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed uppercase tracking-widest mb-1">
+        <span className="font-label-sm text-label-md font-bold  uppercase tracking-widest mb-1">
           {product.brand}
         </span>
-        <h4 className="font-headline-sm text-headline-sm text-primary dark:text-on-primary mb-2">
+        <h4 className="font-headline-sm text-headline-sm  mb-4">
           {product.name}
         </h4>
         <div className="flex items-center gap-2 mb-4">
