@@ -6,7 +6,7 @@ interface ProductListProps {
   products: Product[];
 }
 
-type FilterType = 'all' | 'niche' | 'designer' | 'under-100' | '100-600' | 'over-600';
+type FilterType = 'all' | 'niche' | 'designer' | 'under-200' | '200-600' | 'over-600';
 
 export const ProductList: React.FC<ProductListProps> = ({ products }) => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
@@ -15,8 +15,8 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
     { label: 'Todos', value: 'all' },
     { label: 'Nicho', value: 'niche' },
     { label: 'Diseñador', value: 'designer' },
-    { label: 'Menos de $100.000', value: 'under-100' },
-    { label: '$100.000- $600.000', value: '100-600' },
+    { label: 'Menos de $200.000', value: 'under-200' },
+    { label: '$200.000- $600.000', value: '200-600' },
     { label: 'Más de $600.000', value: 'over-600' },
   ];
 
@@ -26,12 +26,12 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
         return product.category === 'niche';
       case 'designer':
         return product.category === 'designer';
-      case 'under-100':
-        return product.price < 100;
-      case '100-600':
-        return product.price >= 100 && product.price <= 600;
+      case 'under-200':
+        return product.price < 200000;
+      case '200-600':
+        return product.price >= 200000 && product.price <= 600000;
       case 'over-600':
-        return product.price > 600;
+        return product.price > 600000;
       case 'all':
       default:
         return true;

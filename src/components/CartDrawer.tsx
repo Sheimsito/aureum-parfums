@@ -21,19 +21,17 @@ export const CartDrawer: React.FC = () => {
 
       {/* Cart Drawer */}
       <aside
-        className={`bg-surface-container-low dark:bg-primary-container fixed right-0 top-0 h-full w-full md:w-96 z-50 border-l border-outline-variant dark:border-on-surface-variant shadow-2xl flex flex-col p-gutter transition-transform duration-500 ease-in-out ${
+        className={`bg-surface-container-low bg-white/75 fixed right-0 top-0 h-full w-full md:w-96 z-50 border-l border-outline-variant dark:border-on-surface-variant shadow-2xl flex flex-col p-gutter transition-transform duration-500 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Header */}
         <div className="flex justify-between items-center mb-8 border-b border-outline-variant pb-4">
           <div>
-            <h2 className="font-headline-sm text-headline-sm text-primary dark:text-on-primary">
-              Shopping Bag
+            <h2 className="font-headline-sm text-headline-sm text-black ">
+              Carrito de Compras
             </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container">
-              Your curated selection
-            </p>
+           
           </div>
           <button
             className="text-on-surface dark:text-on-primary hover:text-primary transition-colors flex items-center justify-center p-1 cursor-pointer"
@@ -48,15 +46,15 @@ export const CartDrawer: React.FC = () => {
         <div className="flex-grow overflow-y-auto pr-2 space-y-6">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-64 text-center">
-              <span className="material-symbols-outlined text-4xl mb-4 text-on-surface-variant/40">
+              <span className="material-symbols-outlined text-4xl mb-4 text-on-surface-variant/90">
                 shopping_bag
               </span>
-              <p className="font-body-md text-on-surface-variant">Your bag is empty.</p>
+              <p className="font-body-md text-on-surface-variant">Tu carrito está vacío.</p>
               <button
                 onClick={() => setOpen(false)}
-                className="mt-4 border border-secondary-fixed text-primary dark:text-secondary-fixed font-label-sm text-label-sm uppercase tracking-widest px-6 py-2 hover:bg-surface-container-high dark:hover:bg-primary transition-colors duration-300 cursor-pointer"
+                className="mt-4 border border-secondary-fixed bg-primary text-white dark:text-secondary-fixed font-label-sm text-label-sm uppercase tracking-widest px-6 py-2 hover:bg-black/50 transition-colors duration-300 cursor-pointer"
               >
-                Continue Browsing
+                Seguir explorando
               </button>
             </div>
           ) : (
@@ -75,7 +73,7 @@ export const CartDrawer: React.FC = () => {
                 <div className="flex-grow">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-headline-sm text-[16px] text-primary dark:text-on-primary mb-1">
+                      <h3 className="font-headline-sm text-[16px] text-black mb-1">
                         {item.product.name}
                       </h3>
                       <p className="font-label-sm text-label-sm text-on-surface-variant dark:text-on-primary-container mb-2 capitalize">
@@ -93,7 +91,7 @@ export const CartDrawer: React.FC = () => {
 
                   {/* Quantity and Price */}
                   <div className="flex justify-between items-center">
-                    <div className="flex items-center border border-outline-variant bg-surface dark:bg-primary-container">
+                    <div className="flex items-center border border-outline-variant bg-white">
                       <button
                         onClick={() => updateQuantity(item.product.id, -1)}
                         className="px-2 py-1 text-on-surface-variant hover:text-primary dark:hover:text-on-primary transition-colors cursor-pointer"
@@ -101,7 +99,7 @@ export const CartDrawer: React.FC = () => {
                       >
                         -
                       </button>
-                      <span className="px-2 font-label-sm text-primary dark:text-on-primary select-none">
+                      <span className="px-2 font-label-sm text-black select-none">
                         {item.quantity}
                       </span>
                       <button
@@ -112,7 +110,7 @@ export const CartDrawer: React.FC = () => {
                         +
                       </button>
                     </div>
-                    <span className="font-label-lg text-label-lg text-primary dark:text-on-primary">
+                    <span className="font-label-lg text-label-lg text-black">
                       ${item.product.price * item.quantity}
                     </span>
                   </div>
@@ -126,15 +124,15 @@ export const CartDrawer: React.FC = () => {
         {items.length > 0 && (
           <div className="mt-8 pt-6 border-t border-outline-variant">
             <div className="flex justify-between items-center mb-6">
-              <span className="font-label-lg text-label-lg text-on-surface-variant dark:text-on-primary-container uppercase tracking-widest">
+              <span className="font-label-lg text-label-lg text-black uppercase tracking-widest">
                 Subtotal
               </span>
-              <span className="font-headline-sm text-[20px] text-primary dark:text-on-primary">
+              <span className="font-headline-sm text-[20px] text-black">
                 ${subtotal}
               </span>
             </div>
             <button
-              onClick={() => alert('Proceeding to checkout...')}
+              onClick={() => alert('Pasando a la pasarela de pago')}
               className="w-full bg-primary text-on-primary dark:bg-secondary-fixed dark:text-on-secondary-fixed font-label-lg text-label-lg uppercase tracking-widest py-4 hover:bg-surface-tint dark:hover:bg-secondary-fixed-dim transition-colors duration-300 cursor-pointer text-center"
             >
               Checkout
