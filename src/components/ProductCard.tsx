@@ -15,14 +15,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <article className={`frameless-card group flex flex-col ${className}`}>
-      {/* Product Image Wrap with Hover Quick Add */}
+      {/* Envoltorio de imagen del producto con agregar rápido al pasar el mouse */}
       <div className="frameless-card-image-wrap bg-surface-container-low aspect-[3/4] mb-6 flex items-center justify-center p-8 relative">
         <img
-          alt={product.name}
+          alt={product.alt}
           className="frameless-card-image w-full h-full object-cover mix-blend-darken shadow-sm"
           src={product.image}
         />
-        {/* Hover Action Overlay */}
+        {/* Capa de acción al pasar el mouse */}
         <div className="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out opacity-0 group-hover:opacity-100 flex justify-center z-10">
           <button
             onClick={() => addToCart(product)}
@@ -33,7 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
 
-      {/* Product Information */}
+      {/* Información del producto */}
       <div className="flex flex-col items-center text-center">
         <span className="font-label-sm text-label-md font-bold  uppercase tracking-widest mb-1">
           {product.brand}
@@ -52,7 +52,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           ))}
         </div>
         <span className="font-body-md text-body-md text-primary dark:text-on-primary font-medium">
-          ${product.price}
+          ${product.price.toLocaleString('es-CO')}
         </span>
       </div>
     </article>

@@ -7,6 +7,7 @@ export interface Product {
   tags: string[];
   image: string;
   description?: string;
+  alt: string;
 }
 
 export interface CartItem {

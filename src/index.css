@@ -175,3 +175,66 @@
 .frameless-card:hover .frameless-card-image {
   transform: scale(1.05);
 }
+
+/* Catalog sidebar range slider */
+.catalog-range {
+  height: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.catalog-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #000000;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.catalog-range::-moz-range-thumb {
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #000000;
+  cursor: pointer;
+}
+
+.catalog-range::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 1px;
+}
+
+.catalog-range::-moz-range-track {
+  background: transparent;
+  height: 1px;
+}
+
+.catalog-range--min {
+  z-index: 3;
+}
+
+.catalog-range--max {
+  z-index: 4;
+}
+
+.catalog-category-list {
+  scrollbar-width: thin;
+  scrollbar-color: #c4c7c7 transparent;
+}
+
+.catalog-category-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.catalog-category-list::-webkit-scrollbar-thumb {
+  background: #c4c7c7;
+  border-radius: 999px;
+}
