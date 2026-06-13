@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
+import { useNavigation } from '../context/NavigationContext';
+import type { Page } from '../context/NavigationContext';
 
-const nav = [
-  { label: "Inicio", href: "#top" },
-  { label: "Catálogo", href: "#catalog" },
-  { label: "Sobre Nosotros", href: "#about" },
+const navItems: { label: string; page: Page }[] = [
+  { label: 'Inicio', page: 'home' },
+  { label: 'Catálogo', page: 'catalog' },
+  { label: 'Sobre Nosotros', page: 'about' },
 ];
 
 const ShoppingBag = ({ className, strokeWidth = 1.25 }: { className?: string; strokeWidth?: number }) => (
@@ -65,6 +67,7 @@ const Menu = ({ className, strokeWidth = 1.25 }: { className?: string; strokeWid
 
 export function Header() {
   const { count, setOpen, bumpKey } = useCart();
+  const { page, navigateTo } = useNavigation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bumping, setBumping] = useState(false);
 
@@ -75,10 +78,23 @@ export function Header() {
     return () => clearTimeout(t);
   }, [bumpKey]);
 
+  const handleNavClick = (target: Page) => {
+    navigateTo(target);
+    setMobileOpen(false);
+  };
+
+  const linkClass = (isActive: boolean) =>
+    `text-xs uppercase tracking-[0.25em] transition-colors ${
+      isActive ? 'text-gold' : 'text-black-500 hover:text-gold'
+    }`;
+
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#top" className="group flex flex-col">
+        <button
+          onClick={() => handleNavClick('home')}
+          className="group flex flex-col cursor-pointer"
+        >
           <span className="font-serif text-xl tracking-[0.18em] uppercase text-black-500">
             Aureum
           </span>
@@ -86,17 +102,17 @@ export function Header() {
             Parfums
           </span>
           <span className="block h-px w-8 bg-gold mt-1 transition-all duration-500 group-hover:w-16" />
-        </a>
+        </button>
 
         <nav className="hidden md:flex items-center gap-10">
-          {nav.map((n) => (
-            <a
-              key={n.label}
-              href={n.href}
-              className="text-xs uppercase tracking-[0.25em] text-black-500 hover:text-gold transition-colors"
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => handleNavClick(item.page)}
+              className={`${linkClass(page === item.page)} cursor-pointer bg-transparent border-none`}
             >
-              {n.label}
-            </a>
+              {item.label}
+            </button>
           ))}
         </nav>
 
@@ -106,7 +122,7 @@ export function Header() {
             aria-label="Open cart"
             className="relative p-2 hover:text-gold transition-colors cursor-pointer text-black-500"
           >
-            <ShoppingBag className={`h-5 w-5 ${bumping ? "animate-cart-bump" : ""}`} strokeWidth={1.25} />
+            <ShoppingBag className={`h-5 w-5 ${bumping ? 'animate-cart-bump' : ''}`} strokeWidth={1.25} />
             {count > 0 && (
               <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-gold text-onyx text-[10px] font-medium flex items-center justify-center">
                 {count}
@@ -126,15 +142,18 @@ export function Header() {
       {mobileOpen && (
         <div className="md:hidden border-t border-border/60 bg-background">
           <nav className="flex flex-col px-6 py-4 gap-4">
-            {nav.map((n) => (
-              <a
-                key={n.label}
-                href={n.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm uppercase tracking-[0.25em] text-foreground/80 hover:text-gold text-primary dark:text-on-primary dark:hover:text-gold py-1"
+            {navItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => handleNavClick(item.page)}
+                className={`text-sm uppercase tracking-[0.25em] py-1 text-left cursor-pointer bg-transparent border-none ${
+                  page === item.page
+                    ? 'text-gold'
+                    : 'text-foreground/80 hover:text-gold text-primary dark:text-on-primary dark:hover:text-gold'
+                }`}
               >
-                {n.label}
-              </a>
+                {item.label}
+              </button>
             ))}
           </nav>
         </div>

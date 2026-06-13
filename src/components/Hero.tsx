@@ -8,18 +8,18 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onExploreClick }) => {
   return (
     <section className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center bg-surface-container-high overflow-hidden">
-      {/* Background Image */}
+      {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <img
-          alt="Hero Background"
+          alt="Frascos de perfume Dior Homme con iluminación cálida y fondo de lujo"
           className="w-full h-full object-cover opacity-80 brightness-25 mix-blend-multiply"
           src={heroImg}
         />
-        {/* Tonal Layering Overlay */}
+        {/* Superposición de capas tonales */}
         <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
       </div>
 
-      {/* Content */}
+      {/* Contenido */}
       <div className="relative z-10 text-center px-margin-mobile md:px-0 max-w-3xl mx-auto flex flex-col items-center gap-6 mt-20">
         <h2 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary dark:text-on-primary text-balance drop-shadow-sm">
           Usa tu Esencia

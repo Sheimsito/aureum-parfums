@@ -3,10 +3,10 @@ import althair from '../assets/Althair.webp';
 
 export const Editorial: React.FC = () => {
   return (
-    <section id="about" className="py-24 bg-black/90 scroll-mt-20">
+    <section id="editorial" className="py-24 bg-black/90 scroll-mt-20">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-          {/* Text Content */}
+          {/* Contenido de texto */}
           <div className="md:col-span-5 flex flex-col items-start space-y-6">
             <span className="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed uppercase tracking-widest">
               Perfums de Marly: Althair
@@ -37,11 +37,11 @@ export const Editorial: React.FC = () => {
             </button>
           </div>
 
-          {/* Asymmetrical Image Side */}
+          {/* Imagen de  la botella de  Althair */}
           <div className="md:col-span-7 relative h-[600px] w-full">
             <div className="absolute inset-0 bg-white/80 border border-white/80 rounded-3xl flex items-center justify-center  overflow-hidden">
               <img
-                alt="Althair"
+                alt="Botella del perfume Parfums de Marly Althaïr en color ámbar con tapón plateado"
                 className="w-full h-full object-cover  transition-transform duration-700 hover:scale-105"
                 src={althair}
               />

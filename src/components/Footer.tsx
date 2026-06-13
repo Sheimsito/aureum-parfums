@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-primary-container dark:bg-primary w-full py-margin-desktop">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center gap-unit text-center">
-        {/* Brand Header */}
+        {/* Encabezado de la marca */}
         <div className="mb-8 opacity-80 hover:opacity-100 transition-opacity">
           <a
             href="#"
@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
           </a>
         </div>
 
-        {/* Footer Links */}
+        {/* Enlaces del footer */}
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
           <a
             className="font-label-sm text-label-sm uppercase tracking-widest text-on-primary-container hover:text-surface transition-colors"
