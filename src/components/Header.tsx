@@ -83,9 +83,17 @@ export function Header() {
     setMobileOpen(false);
   };
 
+  const navLinkColors = (isActive: boolean) =>
+    isActive
+      ? 'text-secondary font-medium'
+      : 'text-on-background hover:text-secondary';
+
   const linkClass = (isActive: boolean) =>
-    `text-xs uppercase tracking-[0.25em] transition-colors ${
-      isActive ? 'text-gold' : 'text-black-500 hover:text-gold'
+    `text-xs uppercase tracking-[0.25em] transition-colors ${navLinkColors(isActive)}`;
+
+  const mobileLinkClass = (isActive: boolean) =>
+    `text-sm uppercase tracking-[0.25em] py-3 text-left pl-3 border-l-2 transition-colors ${navLinkColors(isActive)} ${
+      isActive ? 'border-secondary' : 'border-transparent'
     }`;
 
   return (
@@ -132,7 +140,7 @@ export function Header() {
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Menu"
-            className="md:hidden p-2 cursor-pointer text-primary dark:text-on-primary"
+            className="md:hidden p-2 cursor-pointer text-on-background hover:text-secondary transition-colors"
           >
             {mobileOpen ? <X className="h-5 w-5" strokeWidth={1.25} /> : <Menu className="h-5 w-5" strokeWidth={1.25} />}
           </button>
@@ -140,17 +148,13 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-border/60 bg-background">
-          <nav className="flex flex-col px-6 py-4 gap-4">
+        <div className="md:hidden border-t border-border/60 bg-surface-container">
+          <nav className="flex flex-col px-6 py-2 gap-1">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.page)}
-                className={`text-sm uppercase tracking-[0.25em] py-1 text-left cursor-pointer bg-transparent border-none ${
-                  page === item.page
-                    ? 'text-gold'
-                    : 'text-foreground/80 hover:text-gold text-primary dark:text-on-primary dark:hover:text-gold'
-                }`}
+                className={`${mobileLinkClass(page === item.page)} cursor-pointer bg-transparent border-none`}
               >
                 {item.label}
               </button>

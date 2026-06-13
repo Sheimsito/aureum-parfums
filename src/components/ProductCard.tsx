@@ -38,10 +38,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <span className="font-label-sm text-label-md font-bold  uppercase tracking-widest mb-1">
           {product.brand}
         </span>
-        <h4 className="font-headline-sm text-headline-sm  mb-4">
+        <h4 className="font-headline-sm text-headline-sm mb-2">
           {product.name}
         </h4>
-        <div className="flex items-center gap-2 mb-4">
+        <p className="font-body-md text-body-md text-secondary font-medium tabular-nums mb-4">
+          ${product.price.toLocaleString('es-CO')}
+        </p>
+        <div className="flex items-center gap-2">
           {product.tags.map((tag) => (
             <span
               key={tag}
@@ -51,9 +54,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           ))}
         </div>
-        <span className="font-body-md text-body-md text-primary dark:text-on-primary font-medium">
-          ${product.price.toLocaleString('es-CO')}
-        </span>
       </div>
     </article>
   );
